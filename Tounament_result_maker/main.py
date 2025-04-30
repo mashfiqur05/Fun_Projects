@@ -11,9 +11,10 @@ tournamentName = input("Enter the name of your tournament: ")
 roundName = input("Enter the round name (ex. Semi Final): ")
 totalTeam = int(input("Enter the number of teams: "))
 
+position_suffix = ["st", "nd", "rd"] + ["th"] * (totalTeam - 3)
+
 positionPoint = []
 for i in range(totalTeam):
-    position_suffix = ["st", "nd", "rd"] + ["th"] * (totalTeam - 3)
     point = int(input(f"Enter the point for the {i+1}{position_suffix[i]} position: "))
     positionPoint.append(point)
 
@@ -24,7 +25,6 @@ print("\n\n")
 scoreBoard = {}
 
 for matchNo in range(totalMatch):
-    position_suffix = ["st", "nd", "rd"] + ["th"] * (totalMatch - 3)
     print(f"Enter the details of {matchNo + 1}{position_suffix[i]} macth:\n")
     
     for i in range(totalTeam):
@@ -59,11 +59,11 @@ sorted_score =  sorted(scoreBoard.items(), key=sortTeam)
 
 
 # Output
-print("\n\t========== RESULT ==========\n")
+print("\n=============== RESULT ===============\n")
 print(f"\t\t{tournamentName}")
 print(f"\t\t{roundName}\n")
 print("\nRank\tTeam\tBooyah\tKills\tPoints")
 
 for rank, (team, stats) in enumerate(sorted_score, start=1):
-    print(f"{rank}\t{team}\t{stats['total_point']}\t{stats['kill_point']}\t{stats['booyah_count']}")
+    print(f"{rank}\t{team}\t{stats['booyah_count']}\t{stats['kill_point']}\t{stats['total_point']}")
 
